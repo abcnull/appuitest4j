@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="WebUI Test Suite" parallel="tests" thread-count="1">
+<suite name="AppUI Test Suite" parallel="tests" thread-count="1">
     <!-- 配置文件路径 -->
     <parameter name="propertiesPath" value="src/test/resources/config/config.properties"/>
 
@@ -17,6 +17,9 @@
 
     <!-- 监听器 -->
     <listeners>
-
+        <!-- 测试日志监听器 -->
+        <listener class-name="com.abcnull.listener.TestLogListener"/>
+        <!-- 优先级监听器 -->
+        <listener class-name="com.abcnull.listener.RePrioritizingListener"/>
     </listeners>
 </suite>

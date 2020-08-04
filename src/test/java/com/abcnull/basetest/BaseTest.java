@@ -1,19 +1,18 @@
 package com.abcnull.basetest;
 
+import com.abcnull.pageobject.page.LoginPage;
 import com.abcnull.util.PropertiesReader;
 import com.abcnull.util.WordartDisplayer;
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 
 /**
+ * BaseTest
+ *
  * @author abcnull@qq.com
  * @version 1.0.0
  * @date 2020/8/1 23:26
@@ -48,15 +47,66 @@ public class BaseTest {
         // todo : 这里可以自己定制其他工具初始化操作（看需要）
     }
 
+    /**
+     * @param platformName   手机系统：Android/IOS
+     * @param udid           设备唯一标识符
+     * @param appPackage     app 包名
+     * @param appActivity    app Activity
+     * @param automationName automation name
+     * @param remoteIP       远端 ip
+     * @param remotePort     端口
+     * @throws MalformedURLException URL
+     */
     @BeforeTest(alwaysRun = true)
     @Parameters({"platformName", "udid", "appPackage", "appActivity", "automationName", "remoteIP", "remotePort"})
-    public void beforeTest(@Optional("Android") String platformName, @Optional("udid") String udid,
-                           @Optional("appPackage") String appPackage, @Optional("appActivity") String appActivity,
-                           @Optional("automationName") String automationName, @Optional("remoteIP") String remoteIP,
-                           @Optional("remotePort") String remotePort) throws MalformedURLException {
+    public void beforeTest(@Optional("Android") String platformName, @Optional("emulator-5554") String udid,
+                           @Optional() String appPackage, @Optional() String appActivity,
+                           @Optional("UiAutomator2") String automationName, @Optional("localhost") String remoteIP,
+                           @Optional("4723") String remotePort) throws MalformedURLException {
         /* 驱动配置 */
         baseDriver = new BaseDriver();
         driver = baseDriver.startApp(platformName, udid, appPackage, appActivity, automationName, remoteIP, remotePort);
         // todo : 由于线程隔离设为 test，这里可以通过 new 一个对象来达到线程隔离的效果，可以做其他的扩展定制（看需要）
+        /* todo : 登录操作可以放在这里（看需要）
+         * LoginPage loginPage = new LoginPage(driver);
+         * loginPage.loginByUI();
+         */
+    }
+
+    /**
+     * 执行一个测试用例中的类方法之前执行
+     */
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        // todo : 登录操作可以放在这里（看需要）
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterPage();
+        loginPage.loginByUI();
+    }
+
+    /**
+     * 执行一个测试用例中的类方法之后执行
+     */
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+        // todo : 登录的注销或其他操作可以放在这里（看需要）
+    }
+
+    /**
+     * 执行一个测试用例之后执行
+     */
+    @AfterTest(alwaysRun = true)
+    public void afterTest() {
+        // 驱动退出关闭浏览器
+        baseDriver.closeBrowser();
+        // todo : 其他工具的释放操作（看需要）
+    }
+
+    /**
+     * 执行一个测试套之后执行
+     */
+    @AfterSuite(alwaysRun = true)
+    public void afterSuite() {
+        // todo : 可自己定制（看需要）
     }
 }

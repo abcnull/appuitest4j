@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import java.net.MalformedURLException;
 
 /**
+ * 责任链-头结点
+ *
  * @author abcnull@qq.com
  * @version 1.0.0
  * @date 2020/8/2 18:22
@@ -20,6 +22,7 @@ public class HeadHandler extends DriverHandler {
      * @param appActivity    app Activity
      * @param automationName automation name
      * @return MobileDriver
+     * @throws MalformedURLException URL
      */
     @Override
     public MobileDriver<WebElement> startMobile(String platformName, String udid, String appPackage, String appActivity, String automationName) throws MalformedURLException {
@@ -37,6 +40,7 @@ public class HeadHandler extends DriverHandler {
      * @param remoteIP       远端 ip
      * @param remotePort     端口
      * @return MobileDriver
+     * @throws MalformedURLException URL
      */
     @Override
     public MobileDriver<WebElement> startMobile(String platformName, String udid, String appPackage, String appActivity, String automationName, String remoteIP, String remotePort) throws MalformedURLException {

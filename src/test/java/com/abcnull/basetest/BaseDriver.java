@@ -3,13 +3,14 @@ package com.abcnull.basetest;
 import com.abcnull.util.PropertiesReader;
 import io.appium.java_client.MobileDriver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * BaseDriver
+ *
  * @author abcnull@qq.com
  * @version 1.0.0
  * @date 2020/8/2 16:53
@@ -57,6 +58,17 @@ public class BaseDriver {
     private String remotePort;
 
 
+    /**
+     * @param platformName   手机系统：Android/IOS
+     * @param udid           设备唯一标识符
+     * @param appPackage     app 包名
+     * @param appActivity    app Activity
+     * @param automationName automation name
+     * @param remoteIP       远端 ip
+     * @param remotePort     端口
+     * @return MobileDriver
+     * @throws MalformedURLException URL
+     */
     public MobileDriver<WebElement> startApp(String platformName, String udid, String appPackage, String appActivity, String automationName, String remoteIP, String remotePort) throws MalformedURLException {
         /* 驱动基本信息参数 */
         this.platformName = platformName;
@@ -86,5 +98,88 @@ public class BaseDriver {
         log.info((platformName.equals("Android")) ? ("安卓" + appPackage + "成功启动！") : ("苹果" + appPackage + "成功启动！"));
 
         return this.driver;
+    }
+
+    /**
+     * getDriver
+     *
+     * @return MobileDriver
+     */
+    public MobileDriver<WebElement> getDriver() {
+        return driver;
+    }
+
+    /**
+     * getPlatformName
+     *
+     * @return platformName
+     */
+    public String getPlatformName() {
+        return platformName;
+    }
+
+    /**
+     * getUdid
+     *
+     * @return udid
+     */
+    public String getUdid() {
+        return udid;
+    }
+
+    /**
+     * getAppPackage
+     *
+     * @return appPackage
+     */
+    public String getAppPackage() {
+        return appPackage;
+    }
+
+    /**
+     * getAppActivity
+     *
+     * @return appActivity
+     */
+    public String getAppActivity() {
+        return appActivity;
+    }
+
+    /**
+     * getAutomationName
+     *
+     * @return automationName
+     */
+    public String getAutomationName() {
+        return automationName;
+    }
+
+    /**
+     * getRemoteIP
+     *
+     * @return remoteIP
+     */
+    public String getRemoteIP() {
+        return remoteIP;
+    }
+
+    /**
+     * getRemotePort
+     *
+     * @return remotePort
+     */
+    public String getRemotePort() {
+        return remotePort;
+    }
+
+    /**
+     * 退出驱动
+     */
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+        log.info(platformName + "驱动已成功关闭！");
     }
 }
