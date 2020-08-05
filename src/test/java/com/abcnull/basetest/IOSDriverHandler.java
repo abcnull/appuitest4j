@@ -38,8 +38,8 @@ public class IOSDriverHandler extends DriverHandler {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("udid", udid);
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", appActivity);
+        capabilities.setCapability("app", appPackage);
+        // ios 的 automationName 是 XCUITest
         capabilities.setCapability("automationName", automationName);
         // noRest
         capabilities.setCapability("noReset", true);
@@ -72,8 +72,8 @@ public class IOSDriverHandler extends DriverHandler {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("udid", udid);
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", appActivity);
+        capabilities.setCapability("app", appPackage);
+        // ios 的 automationName 是 XCUITest
         capabilities.setCapability("automationName", automationName);
         // noRest
         capabilities.setCapability("noReset", true);

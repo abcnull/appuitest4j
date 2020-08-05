@@ -1,6 +1,8 @@
 package com.abcnull.util;
 
 /**
+ * 截图工具类
+ *
  * @author abcnull@qq.com
  * @version 1.0.0
  * @date 2020/8/1 23:30
@@ -12,6 +14,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 
 import java.io.File;
@@ -66,5 +69,6 @@ public class ScreenshotUtil {
             e.printStackTrace();
             log.error("截图操作异常！");
         }
+        WebDriver driver2 = new ChromeDriver();
     }
 }

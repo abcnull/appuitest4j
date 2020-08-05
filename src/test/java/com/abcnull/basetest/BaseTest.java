@@ -59,9 +59,9 @@ public class BaseTest {
      */
     @BeforeTest(alwaysRun = true)
     @Parameters({"platformName", "udid", "appPackage", "appActivity", "automationName", "remoteIP", "remotePort"})
-    public void beforeTest(@Optional("Android") String platformName, @Optional("emulator-5554") String udid,
-                           @Optional() String appPackage, @Optional() String appActivity,
-                           @Optional("UiAutomator2") String automationName, @Optional("localhost") String remoteIP,
+    public void beforeTest(@Optional("Android") String platformName, @Optional("3a789767") String udid,
+                           @Optional("net.csdn.csdnplus") String appPackage, @Optional(".activity.MainActivity") String appActivity,
+                           @Optional("UiAutomator2") String automationName, @Optional("127.0.0.1") String remoteIP,
                            @Optional("4723") String remotePort) throws MalformedURLException {
         /* 驱动配置 */
         baseDriver = new BaseDriver();

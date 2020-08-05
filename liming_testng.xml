@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="liming Test Suite" parallel="tests" thread-count="2">
+    <!-- csdn 测试 -->
+    <test name="csdn测试" preserve-order="true">
+        <classes>
+            <class name="com.abcnull.testcase.CSDN_HomeTest">
+                <methods>
+                    <!-- 点击关注测试 -->
+                    <include name="testFocus"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

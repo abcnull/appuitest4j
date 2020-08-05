@@ -33,7 +33,7 @@ public abstract class DriverHandler {
      */
     public MobileDriver<WebElement> start(String platformName, String udid, String appPackage, String appActivity, String automationName, String remoteIP, String remotePort) throws MalformedURLException {
         // 通过 remoteIP 是不是空来判定在本地还是远端运行
-        if (remoteIP == null || remoteIP.isEmpty()) {
+        if ((remoteIP == null || remoteIP.isEmpty() || remoteIP.equals("127.0.0.1") || remoteIP.equals("localhost")) && remotePort.equals("4723")) {
             return startMobile(platformName, udid, appPackage, appActivity, automationName);
         } else {
             return startMobile(platformName, udid, appPackage, appActivity, automationName, remoteIP, remotePort);

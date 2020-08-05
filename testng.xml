@@ -4,15 +4,25 @@
     <!-- 配置文件路径 -->
     <parameter name="propertiesPath" value="src/test/resources/config/config.properties"/>
 
-    <!-- jenkins 传参示例 -->
+    <!-- jenkins 传参示例，可做成数据驱动 -->
     <parameter name="param1" value="${param1}"/>
     <parameter name="param2" value="${param2}"/>
 
-
+    <!-- 测试关键参数（下面已经配置好了我自己机型的 csdn app 的测试）-->
+    <parameter name="platformName" value="Android"/>
+    <parameter name="udid" value="3a789767"/>
+    <parameter name="appPackage" value="net.csdn.csdnplus"/>
+    <parameter name="appActivity" value=".activity.MainActivity"/>
+    <parameter name="automationName" value="UiAutomator2"/>
+    <parameter name="remoteIP" value="localhost"/>
+    <parameter name="remotePort" value="4723"/>
 
     <!-- 测试套件 -->
     <suite-files>
-
+        <!-- Li Ming -->
+        <suite-file path="liming_testng.xml"/>
+        <!-- Zhang Hua -->
+        <suite-file path="zhanghua_testng.xml"/>
     </suite-files>
 
     <!-- 监听器 -->

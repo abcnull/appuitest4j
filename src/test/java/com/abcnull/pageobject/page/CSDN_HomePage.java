@@ -5,6 +5,7 @@ import com.abcnull.pageobject.locator.CSDN_HomeLocator;
 import io.appium.java_client.MobileDriver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 /**
  * CSDN 首页操作
@@ -30,5 +31,6 @@ public class CSDN_HomePage extends BasePage {
     public void clickFocus() {
         log.info("点击首页的关注按钮");
         clickButton(CSDN_HomeLocator.focusBtn);
+        Assert.assertTrue(true);
     }
 }
