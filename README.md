@@ -1,5 +1,4 @@
 @[toc]
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813181540561.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FiY251bGw=,size_16,color_FFFFFF,t_70#pic_center)
 
 # 写在前面
 
@@ -29,7 +28,7 @@ appuitest4j：[https://github.com/abcnull/appuitest4j](https://github.com/abcnul
 
 我这里张贴一下我的项目结构图
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813181628756.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FiY251bGw=,size_16,color_FFFFFF,t_70#pic_center)
+![项目结构](https://github.com/abcnull/Image-Resources/blob/master/appuitest4j/项目结构.png)
 
 
 整体框架都是放在 test 包下，采用了 pageobject 思想，我们将页面对象抽离出来，复杂的页面操作逻辑写在其中，pageobject 大致分为两个大的“阵营”，一个是 page 阵营，也就是单纯的页面对象，另一个就是 case 阵营存放测试用例脚本
@@ -89,7 +88,7 @@ appuitest4j：[https://github.com/abcnull/appuitest4j](https://github.com/abcnul
 
 项目支持数据驱动的方式，我们实际中的 UI 自动化往往通过 jenkins 来持续构建，jenkins 的 job 中支持 param 传参，我们在 mvn 项目的 pom 文件中添加如下：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813181648652.png#pic_center)
+![数据驱动](https://github.com/abcnull/Image-Resources/blob/master/appuitest4j/数据驱动.png)
 
 
 xmlFileName，param1，param2，param3 这些名字需要与 jenkins 中传参名字一致，然后 mvn 中需要一个 surefile 插件，在这个插件的 suiteXmlFiles 标签中指定运行那个 testng.xml `<suiteXmlFile>testng.xml</suiteXmlFile>`，还可以指定传给 testng.xml 的参数（具体可以拉取项目代码查看）
@@ -102,7 +101,7 @@ xmlFileName，param1，param2，param3 这些名字需要与 jenkins 中传参�
 
 surefire 是 mvn 的一个非常适用的测试插件，它可以结合 junit5，testng 来使用，我们可以使用它来帮助我们外部传参，可以使用它指定当我们 mvn 构建时候要执行哪个 testng.xml 文件
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813181709223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FiY251bGw=,size_16,color_FFFFFF,t_70#pic_center)
+![surefire](https://github.com/abcnull/Image-Resources/blob/master/appuitest4j/surefire.png)
 
 
 甚至我们可以使用 mvn 命令配合上 surefire 加上一些命令参数来运行指定的测试用例，这些可以通过访问 surefire 官网来查看
