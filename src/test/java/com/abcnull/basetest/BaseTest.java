@@ -48,6 +48,8 @@ public class BaseTest {
     }
 
     /**
+     * 在每个 <test> 之前执行
+     *
      * @param platformName   手机系统：Android/IOS
      * @param udid           设备唯一标识符
      * @param appPackage     app 包名
@@ -93,12 +95,13 @@ public class BaseTest {
     }
 
     /**
-     * 执行一个测试用例之后执行
+     * 在每个 <test> 之后执行
      */
     @AfterTest(alwaysRun = true)
     public void afterTest() {
         // 驱动退出关闭浏览器
         baseDriver.closeBrowser();
+        driver = null;
         // todo : 其他工具的释放操作（看需要）
     }
 
